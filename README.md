@@ -15,7 +15,7 @@
 ## Beschrijving
 Voor dit project willen we onze eerste ontwerp en uitwerking die op onze oude profile card zit de API content hierin toe te voegen. Hierbij kunnen we gebruik maken van een demo die [FDND](https://github.com/fdnd-task/connect-your-tribe-profile-card) ons al heeft gegeven. Hierbij maken we gebruik van [node.js](https://nodejs.org/en).
 
-[link naar live website](driezie.github.io/connect-your-tribe-profile-card/)
+[link naar live website](https://driezie-sprint-7.cyclic.app/)
 
 <img width="498" alt="image" src="https://github.com/driezie/connect-your-tribe-profile-card/assets/80174866/b5c5e590-faf2-4b7b-ae0e-2b9a307cd095">
 
