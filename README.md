@@ -69,6 +69,8 @@ Deze respository is gemaakt door Jelte. Als uw code hierbij wilt gebruiken graag
 - [https://github.com/driezie/your-tribe-profile-card](https://github.com/driezie/your-tribe-profile-card)
 - [node.js](https://nodejs.org/en)
 - [https://github.com/fdnd/task](https://github.com/fdnd/task)
+- [https://driezie-sprint-7.cyclic.app/](https://driezie-sprint-7.cyclic.app/)
+- [https://cyclic.app](https://cyclic.app)
 
 ## Licentie
 
