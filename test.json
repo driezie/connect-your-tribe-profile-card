@@ -1,0 +1,36 @@
+[
+    {
+        "title": "Content",
+        "content": [
+            {
+                "title": "My skills",
+                "description": "I'm a front-end developer working with a lot of passion and fun. I'm always ready to make new designs and ideas to add to my projects"
+            },
+            {
+                "title": "Music 🎵",
+                "description": "I absolutely love to play music. I play piano but also acoustic guitar and electric guitar. I love to play in train stations to make other people happy with my music"
+            },
+            {
+                "title": "The rest...",
+                "description": "Movies and films are my favorite things to do and watch 🙃"
+            }
+        ]
+    },
+    {
+        "title": "Socials",
+        "content": [
+            {
+                "icon": "fa-brands fa-github", 
+                "link": "https://github.com/driezie"
+            },
+            {
+                "icon": "fa-brands fa-twitter", 
+                "link": "https://x.com/DevvJust"
+            },
+            {
+                "icon": "fa-brands fa-codepen", 
+                "link": "https://codepen.io/driezie"
+            }
+        ]
+    }
+]

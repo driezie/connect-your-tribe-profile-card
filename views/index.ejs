@@ -1,14 +1,65 @@
 <%- include('./partials/head') %>
 
-<article>
-  <header>
-    <h1>Hallo</h1>
-    <p>mijn naam is</p>
-  </header>
 
-  <p><%= data.name %></p>
+<div class="container">
+  <article class="card" id="card">
+      <div class="card_inner">
+          <section class="front">
+              <button onclick="turn()">
+                  click me <i class="fa-solid fa-angles-right"></i>
+              </button>
+              <header>
+                <!-- 
+                    Display the name and prefix from the custom data
+                 -->
+                  <h1><%= data.name %></h1>
+                  <p><%= data.bio %></p>
+              </header>
 
-  <footer></footer>
-</article>
+              <ul class="socials">
+                <!-- 
+                    Loop through the custom data and check if the title is 'Socials'
+                    If it is, loop through the content and display the link and icon
+                 -->
+                <% custom.forEach(item => { %>
+                    <% if (item.title == 'Socials') { %>
+                        <% item.content.forEach(social => { %>
+                            <li>
+                                <a href="<%= social.link %>" target="_blank"><i class="<%= social.icon %>"></i></a>
+                            </li>
+                        <% }) %>
+                    <% } %>
+                <% }) %>
+              </ul>
+
+          </section>
+          <section class="back">
+            <!-- 
+                Loop through the custom data and check if the title is 'Content'
+                If it is, loop through the content and display the title and description
+             -->
+            <% custom.forEach(item => { %>
+                <% if (item.title == 'Content') { %>
+                    <% item.content.forEach(content => { %>
+                        <article>
+                            <h2>
+                                <%= content.title %>
+                            </h2>
+                            <p>
+                                <%= content.description %>
+                            </p>
+                        </article>
+                    <% }) %>
+                <% } %>
+            <% }) %>
+
+                  <button onclick="turn()">
+                      <i class="fa-solid fa-angles-left"></i> go back
+                  </button>
+          </section>
+      </div>
+  </article>
+
+</div>
 
 <%- include('./partials/foot') %>

@@ -1,0 +1,132 @@
+body {
+    margin: 0;
+}
+
+.designs-buttons {
+    padding-top: 10px;
+    display: flex;
+    justify-content: center;
+}
+
+/* .front button add keyframe animation to show it is a button using an animation */
+
+@keyframes shake {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    20% {
+        transform: rotate(10deg);
+    }
+
+    40% {
+        transform: rotate(-10deg);
+    }
+
+    60% {
+        transform: rotate(10deg);
+    }
+
+    80% {
+        transform: rotate(-10deg);
+    }
+
+    100% {
+        transform: rotate(0deg);
+    }
+}
+
+/* make the shake animation when not hovering */
+
+.front button {
+    animation-name: shake;
+    animation-duration: .5s;
+    animation-iteration-count: 1;
+    animation-timing-function: ease-in-out;
+    animation-delay: 2.5s;
+}
+
+.front button:hover {
+    animation-name: none;
+}
+
+#card.turned .back button {
+    animation-name: shake;
+    animation-duration: .5s;
+    animation-iteration-count: 1;
+    animation-timing-function: ease-in-out;
+    animation-delay: 3.5s;
+}
+
+#card.turned .back button:hover {
+    animation-name: none;
+}
+
+.designs-buttons a {
+    padding: 0.5rem 1.5rem;
+    border: none;
+    border-radius: 10px;
+    transform: scale(.8);
+    transition: .25s;
+    background-color: #dcb16a;
+    color: white;
+    text-decoration: none;
+}
+
+.designs-buttons a:hover {
+    background-color: #bf995b;
+}
+
+@keyframes shake {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    20% {
+        transform: rotate(10deg);
+    }
+
+    40% {
+        transform: rotate(-10deg);
+    }
+
+    60% {
+        transform: rotate(10deg);
+    }
+
+    80% {
+        transform: rotate(-10deg);
+    }
+
+    100% {
+        transform: rotate(0deg);
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    .card {
+        width: 20em;
+        max-height: 500px;
+        transition: 0.3s ease-in-out;
+    }
+
+    .info h2 {
+        font-size: 1.2rem;
+    }
+
+    p {
+        font-size: 12px;
+    }
+
+    h1 {
+        font-size: 2.5rem;
+    }
+}
+
+.card {
+    transition: 0.3s ease-in-out;
+}
+
+
+/* width: 20em;
+        max-height: 500px; */
