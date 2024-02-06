@@ -12,7 +12,7 @@
                 <!-- 
                     Display the name and prefix from the custom data
                  -->
-                  <h1><%= data.name %></h1>
+                  <h1><%= data.name %> <%= data.surname %></h1>
                   <p><%= data.bio %></p>
               </header>
 
@@ -47,7 +47,7 @@
                         <% item.content.forEach(content => { %>
                                 <li>
                                     <h2>
-                                        <%= content.title %> <%= content.surname %>
+                                        <%= content.title %>
                                     </h2>
                                     <p>
                                         <%= content.description %>
