@@ -2,9 +2,9 @@
 
 
 <div class="container">
-  <article class="card" id="card">
+  <section class="card" id="card">
       <div class="card_inner">
-          <section class="front">
+          <article class="front">
               <button onclick="turn()">
                   click me <i class="fa-solid fa-angles-right"></i>
               </button>
@@ -32,33 +32,34 @@
                 <% }) %>
               </ul>
 
-          </section>
-          <section class="back">
+            </article>
+          <article class="back">
+            <button onclick="turn()">
+                <i class="fa-solid fa-angles-left"></i> go back
+            </button>
             <!-- 
                 Loop through the custom data and check if the title is 'Content'
                 If it is, loop through the content and display the title and description
              -->
-            <% custom.forEach(item => { %>
-                <% if (item.title == 'Content') { %>
-                    <% item.content.forEach(content => { %>
-                        <article>
-                            <h2>
-                                <%= content.title %>
-                            </h2>
-                            <p>
-                                <%= content.description %>
-                            </p>
-                        </article>
-                    <% }) %>
-                <% } %>
-            <% }) %> 
-
-                  <button onclick="turn()">
-                      <i class="fa-solid fa-angles-left"></i> go back
-                  </button>
-          </section>
+             <ul class="content">
+                <% custom.forEach(item => { %>
+                    <% if (item.title == 'Content') { %>
+                        <% item.content.forEach(content => { %>
+                                <li>
+                                    <h2>
+                                        <%= content.title %>
+                                    </h2>
+                                    <p>
+                                        <%= content.description %>
+                                    </p>
+                                </li>
+                        <% }) %>
+                    <% } %>
+                <% }) %> 
+            </ul>
+          </article>
       </div>
-  </article>
+  </section>
 
 </div>
 

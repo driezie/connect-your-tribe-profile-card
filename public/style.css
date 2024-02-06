@@ -1,174 +1,262 @@
+@import url('https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+:root {
+    /* Default settings */
+    --bg-color: #f5f5f5f5;
+    --default-animation: 0.3s ease-in-out;
+    --default-font: 'Figtree', sans-serif, verdana;
+
+    /* Card settings */
+    --card-border-radius: 10px;
+    --card-gradient-color: #DCB16A;
+    --card-image: url('./images/card-cover.jpg');
+    --card-box-shadow: 0 0 20px 20px rgba(0, 0, 0, .1);
+    --card-color: #1A1C1D;
+    --card-default-text-color: white;
+
+    /* Card sizes */
+    --card-width: 400px;
+    --card-height: 600px;
+
+     /* Card back settings */
+    --card-back-title-color: #DCB16A;
+    --card-back-title-size: 1.5rem;
+    --card-back-padding: 0 3rem;
+    --card-buttons-transition: 0.25s;
+
+    /* Social media settings */
+    --card-socials-size: 1.75rem;
+    --card-socials-color: white;
+}
 
 * {
     box-sizing: border-box;
-    font-family: "figtree";
-    font-weight:;
+    font-family: var(--default-font);
+    padding: 0;
+    margin: 0;
 }
 
-html {
-    background-color: #f5f5f5f5;
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: var(--bg-color); 
 }
 
-h1,
-h2 {
-    
-    margin: 2rem 0 1rem;
-    color: #DCB16A;
+h1 {
+    --card-back-title-size: 3rem;
+    font-size: var(--card-back-title-size);
+}
+
+p {
+    /* New Feature (https://web.dev/blog/interop-2024)*/
+    text-wrap: balance
+}
+
+
+button {
+    background-color: transparent;
+    border-width: 0;
+    border: none;
+    color: var(--card-default-text-color);
+    cursor: pointer;
+}
+
+/* Card setup */
+section.card {
+    border-radius: var(--card-border-radius);
+    color: var(--card-default-text-color);
+    height: var(--card-height);
+    /* Perspective is used to give a 3D effect to the card */
+    perspective: 1000px;
+    width: var(--card-width);
+}
+
+section.card.turned .card_inner {
+    /* The card is turned by rotating the inner card 180 degrees */
+    transform: rotateY(180deg);
+}
+
+section.card .card_inner {
+    height: 100%;
+    position: relative;
+    /*  The transform-style property is used to specify how nested elements are rendered in 3D space. */
+    transform-style: preserve-3d;
+    transition: transform 1s;
+    width: 100%;
+}
+
+section.card .front, .back {
+    /* Sets whether the back face of an element is visible when turned towards the user. */
+    backface-visibility: hidden;
+
+    background: var(--card-color);
+    border-radius: var(--card-border-radius);
+    box-shadow: var(--card-box-shadow);
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    overflow: hidden;
+    position: absolute;
+    width: 100%;
+}
+
+section.card .back {
+    /* Turns the back card because that shouldn't show in the start */
+    transform: rotateY(180deg);
+}
+
+section.card .front {
+    /* Sets the image on the whole card */
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0) 50%, var(--card-gradient-color) 100%), var(--card-image);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    /* Sets info content to the bottom of the card */
+    justify-content: end;
     text-align: center;
 }
 
-button {
+section.card .back {
+    display: grid;
+    padding: var(--card-back-padding);
+    place-items: center;
+    text-align: center;
+}
+
+section.card .back ul.content {
+    list-style: none;
+}
+
+section.card .back ul.content h2 {
+    color: var(--card-back-title-color);
+    font-size: var(--card-back-title-size);
+    font-weight: 600;
+    margin: 0;
+    padding: 1rem 0rem;
+    text-align: center;
+}
+
+section.card button {
+    border-radius: var(--card-border-radius);
+    font-size: .8rem;
+    font-weight: 600;
+    padding: 0.75rem;
     position: absolute;
     right: 1rem;
     top: 1rem;
-    width: auto;
-    padding: .75rem;
-    border-width: 0;
-    border: none;
-    border-radius: 10px;
-    background-color: #ffffff00;
-    transition: .25s;
-    cursor: pointer;
-    color: white;
-    font-family: "figtree";
-    font-size: .8rem;
-    font-weight: 900;
+    transition: var(--card-buttons-transition);
 }
 
-button:hover {
+section.card button:hover {
     background-color: #bf995b;
+    margin-right: 5px;
 }
 
-
-/* foto */
-
-img {
-    position: relative;
-    top: 2rem;
-    width: 10em;
-    height: auto;
-    border: 5px solid #fff;
-    border-radius: 10em;
-    box-shadow: 0 0 2px 2px rgba(0, 0, 0, .2);
+section.card button:focus {
+    background-color: #bf995b;
+    margin-right: 5px;
 }
 
-dl {
-    
-    color: white;
-    width: 100%;
-    margin-top: 1rem;
-    padding: 2rem 0;
-    text-align: center;
-    background: #DCB16A;
-    box-shadow: 0 10px 20px 0 rgba(0, 0, 0, .2);
+/* Front */
+section.card header p {
+    font-style: italic;
 }
 
-
-/* normale text styling */
-
-p {
-    
-    margin: 0;
-    padding: 0 50px;
-    color: white;
-}
-
-
-/* grootte van de kaart */
-
-.card {
-    margin: 100px auto 20px;
-    width: 400px;
-    height: 600px;
-    perspective: 1000px;
-}
-
-.card_inner {
-    width: 100%;
-    height: 100%;
-    transition: transform 1s;
-    transform-style: preserve-3d;
-    position: relative;
-}
-
-
-/* zodat de kaart niet op de kop staat */
-
-.card.turned .card_inner {
-    transform: rotateY(180deg);
-}
-
-.card_face {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    backface-visibility: hidden;
-    overflow: hidden;
-    box-shadow: 0 0 20px 20px rgba(0, 0, 0, .1);
-    border-radius: 1rem;
-    background-color: #1A1C1D;
-    display: flex;
-    flex-direction: column;
-}
-
-.front,
-.back {
-    background-image: linear-gradient(to bottom right, var(--primary), var(--secondary));
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.front h2 {
-    color: #FFF;
-    font-size: 32px;
-}
-
-.back {
-    transform: rotateY(180deg);
-}
-
-
-/* social media tab */
-
-.socials {
+section.card ul.socials {
     margin: 50px 0;
+    width: 100%;
+    list-style: none;
+    margin-bottom: 5rem;
 }
 
-
-/* icons */
-
-i {
-    color: white;
-    padding: 0 30px;
-    font-size: 30px;
+section.card ul.socials li {
+    /* This is to make the social media icons in the same line and give a padding between them */
+    display: inline;
+    padding: 0 10px;
 }
 
-a i {
-    transition: 0.3 ease-in-out;
+section.card ul.socials a {
+    font-size: var(--card-socials-size);
+    border-radius: 800px;
 }
 
-a:hover i {
-    color: #DCB16A;
-    transition: 0.3 ease-in-out;
-    /* animatie voor socials */
+section.card ul.socials a:hover i, section.card ul.socials a:focus i {
+    /*  This animation is for the shaking of the icons in the social media section */
     animation-name: shake;
     animation-duration: 0.5s;
+    transition: 0.3 ease-in-out;
+    
 }
 
-button i {
-    font-size: 20px;
-    padding: 0;
+section.card ul.socials i {
+    /* Styling the icon of the social media section */
+    color: var(--card-socials-color);
+    padding: 0 10px;
 }
+
+
+/* Animations */
+
+ /* 
+    This Animation is for the shaking of the icons in the social media section
+ */
+
+@keyframes shake {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    20% {
+        transform: rotate(10deg);
+    }
+
+    40% {
+        transform: rotate(-10deg);
+    }
+
+    60% {
+        transform: rotate(10deg);
+    }
+
+    80% {
+        transform: rotate(-10deg);
+    }
+
+    100% {
+        transform: rotate(0deg);
+    }
+}
+
+
+
+/* Media Queries */
+
+/* 
+    This media query is for the responsiveness of the card on the mobile devices
+ */
 
 @media only screen and (max-width: 600px) {
-    .card_face .front {
-        height: auto;
+    body {
+        overflow: hidden;
     }
-    .socials {
-        margin: 20px 0;
+    section.card {
+        --card-height: 100%;
+        --card-width: 100%;
+        --card-border-radius: 0px; 
     }
-    dl {
-        padding: 1.5rem 0;
+
+    section.card .front, .back {
+        --card-border-radius: 0px;
+    }
+
+    section.card .back {
+        --card-back-padding: 0 1rem;
+    }
+
+    /* Fixing border-radius so only the button will keep the border radius */
+    section.card button {
+        --card-border-radius: 10px;
     }
 }
