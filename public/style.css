@@ -102,12 +102,22 @@ section.card .front, .back {
     width: 100%;
 }
 
+section.card.turned .front {
+    pointer-events: none;
+}
+
+section.card.turned .back {
+    pointer-events: auto;
+}
+
 section.card .back {
+    pointer-events: none;
     /* Turns the back card because that shouldn't show in the start */
     transform: rotateY(180deg);
 }
 
 section.card .front {
+    pointer-events: auto;
     /* Sets the image on the whole card */
     background: linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0) 50%, var(--card-gradient-color) 100%), var(--card-image);
     background-position: center;
@@ -149,12 +159,7 @@ section.card button {
     transition: var(--card-buttons-transition);
 }
 
-section.card button:hover {
-    background-color: #bf995b;
-    margin-right: 5px;
-}
-
-section.card button:focus {
+section.card button:hover, section.card button:focus {
     background-color: #bf995b;
     margin-right: 5px;
 }
