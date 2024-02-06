@@ -1,6 +1,5 @@
 <%- include('./partials/head') %>
 
-
 <div class="container">
   <section class="card" id="card">
       <div class="card_inner">
@@ -9,18 +8,11 @@
                   click me <i class="fa-solid fa-angles-right"></i>
               </button>
               <header>
-                <!-- 
-                    Display the name and prefix from the custom data
-                 -->
                   <h1><%= data.name %> <%= data.surname %></h1>
                   <p><%= data.bio %></p>
               </header>
 
               <ul class="socials">
-                <!-- 
-                    Loop through the custom data and check if the title is 'Socials'
-                    If it is, loop through the content and display the link and icon
-                 -->
                 <% custom.forEach(item => { %>
                     <% if (item.title == 'Socials') { %>
                         <% item.content.forEach(social => { %>
@@ -37,10 +29,6 @@
             <button onclick="turn()">
                 <i class="fa-solid fa-angles-left"></i> go back
             </button>
-            <!-- 
-                Loop through the custom data and check if the title is 'Content'
-                If it is, loop through the content and display the title and description
-             -->
              <ul class="content">
                 <% custom.forEach(item => { %>
                     <% if (item.title == 'Content') { %>
