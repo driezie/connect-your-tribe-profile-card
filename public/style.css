@@ -47,13 +47,19 @@
 h1 {
     --card-back-title-size: 3rem;
     font-size: var(--card-back-title-size);
+    animation-delay: .8s;
+    animation: fadeInRight 1s;
+}
+
+header p {
+    animation-delay: .8s;
+    animation: fadeInLeft 1s;
 }
 
 p {
     /* New Feature (https://web.dev/blog/interop-2024)*/
     text-wrap: balance
 }
-
 
 button {
     background-color: transparent;
@@ -63,8 +69,17 @@ button {
     cursor: pointer;
 }
 
+body {
+    transform-style: preserve-3d;
+    perspective: 100vh;
+}
+
 /* Card setup */
 section.card {
+    transform-style: preserve-3d;
+    z-index: 3;
+    animation-fill-mode: both;
+    animation: animate-in 1.3s;
     border-radius: var(--card-border-radius);
     color: var(--card-default-text-color);
     height: var(--card-height);
@@ -139,6 +154,7 @@ section.card .back ul.content h2 {
 }
 
 section.card button {
+    z-index: 5;
     border-radius: var(--card-border-radius);
     font-size: .8rem;
     font-weight: 600;
@@ -175,22 +191,125 @@ section.card ul.socials li {
 section.card ul.socials a {
     font-size: var(--card-socials-size);
     border-radius: 800px;
+    z-index: 5;
 }
 
-section.card ul.socials a:hover i, section.card ul.socials a:focus i {
-    /*  This animation is for the shaking of the icons in the social media section */
-    animation-name: shake;
-    animation-duration: 0.5s;
-    transition: 0.3 ease-in-out;
-    
+section.card ul.socials a {
+    position: relative;
+    display: inline-block;
+    animation: fadeInUp;
+    animation-duration: 1s;
+    animation-direction: reverse;
+    animation-fill-mode: backwards;
+    animation-timing-function: cubic-bezier(0.895, 0.03, 0.685, 1.22)
+}
+
+section.card ul.socials li:nth-child(1) a {
+    animation-delay: 0.6s;
+}
+
+section.card ul.socials li:nth-child(2) a {
+    animation-delay: 0.8s;
+}
+
+section.card ul.socials li:nth-child(3) a {
+    animation-delay: 1s;
 }
 
 section.card ul.socials i {
-    /* Styling the icon of the social media section */
     color: var(--card-socials-color);
-    padding: 0 10px;
+    padding: 0 10px;    
 }
 
+section.card ul.socials a:hover i, 
+section.card ul.socials a:focus i {
+    /*  This animation is for the shaking of the icons in the social media section */
+    animation-name: shake;
+    animation-duration: 0.5s;
+    animation-fill-mode: forwards;
+}
+
+@property --bg-line {
+    syntax: "<color>";
+    inherits: false;
+    initial-value: transparent;
+}
+
+.container:has(.card.turned):after {
+    --bg-line: var(--card-color);
+}
+
+.container:after {
+    --bg-line: var(--card-gradient-color);
+    opacity: .33;
+    
+    transition: --bg-line 1s ease-in;
+    content: '';
+    background-image: 
+        linear-gradient(
+            transparent 11.5px,
+            var(--bg-line) 0 12.5px,
+            transparent 0
+        ),
+        linear-gradient(
+            to right,
+            transparent 11.5px,
+            var(--bg-line) 0 12.5px,
+            transparent 0
+        );
+    background-position: 50%;
+    background-size: 24px 24px;
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    animation-name: fadeIn-start;
+    animation-duration: 1s;
+    animation-direction: reverse;
+    animation-fill-mode: backwards;
+}
+
+.container:before {
+    content: '';
+    opacity: 1;
+    background-image: linear-gradient(270deg,var(--bg-color),rgba(255,255,255,0) 25%),linear-gradient(270deg,rgba(255,255,255,0) 75%,white),linear-gradient(to bottom,rgba(255,255,255,0) 75%,white),linear-gradient(to bottom,#fff,rgba(255,255,255,0) 25%);
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+}
+
+/* Media Queries */
+
+/* 
+    This media query is for the responsiveness of the card on the mobile devices
+ */
+
+@media only screen and (max-width: 600px) {
+    body {
+        overflow: hidden;
+    }
+    section.card {
+        --card-height: 100%;
+        --card-width: 100%;
+        --card-border-radius: 0px; 
+    }
+
+    section.card .front, .back {
+        --card-border-radius: 0px;
+    }
+
+    section.card .back {
+        --card-back-padding: 0 1rem;
+    }
+
+    /* Fixing border-radius so only the button will keep the border radius */
+    section.card button {
+        --card-border-radius: 10px;
+    }
+
+    section.card button {
+        font-size: 1rem;
+    }
+}
 
 /* Animations */
 
@@ -224,34 +343,60 @@ section.card ul.socials i {
     }
 }
 
-
-
-/* Media Queries */
-
-/* 
-    This media query is for the responsiveness of the card on the mobile devices
- */
-
-@media only screen and (max-width: 600px) {
-    body {
-        overflow: hidden;
+@keyframes animate-in {
+    0% {
+        --ease-out-short: cubic-bezier(.15,.7,.78,1);
+        opacity: 0;
+        transform: rotateX(60deg) rotateY(10deg) rotateZ(-10deg);
+        transform-origin: top;
+        animation-timing-function: var(--ease-out-short);
     }
-    section.card {
-        --card-height: 100%;
-        --card-width: 100%;
-        --card-border-radius: 0px; 
+    100% {
+        opacity: 1;
+        transform: none;
     }
+}
 
-    section.card .front, .back {
-        --card-border-radius: 0px;
+@keyframes fadeInUp {   
+    from {
+        opacity: 1;
+        transform: translateY(0);
     }
-
-    section.card .back {
-        --card-back-padding: 0 1rem;
+    to {
+        transform: translateY(37px);
+        opacity: 0;
     }
+}
 
-    /* Fixing border-radius so only the button will keep the border radius */
-    section.card button {
-        --card-border-radius: 10px;
+@keyframes fadeInLeft {
+    from {
+        opacity: 0;
+        transform: translate3d(-37px,0,0);
+    }
+    to {
+        opacity: 1;
+        transform: translate3d(0,0,0);
+    }
+    
+}
+
+@keyframes fadeInRight {
+    from {
+        opacity: 0;
+        transform: translate3d(37px,0,0);
+    }
+    to {
+        opacity: 1;
+        transform: translate3d(0,0,0);
+    }  
+}
+
+@keyframes fadeIn-start {
+    from {
+        opacity: .33;
+    }
+    to {
+        opacity: 0;
+        
     }
 }
