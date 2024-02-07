@@ -9,7 +9,7 @@
     /* Card settings */
     --card-border-radius: 10px;
     --card-gradient-color: #DCB16A;
-    --card-image: url('./images/card-cover.jpg');
+    --card-image: url('./images/card-cover-compress.webp');
     --card-box-shadow: 0 0 20px 20px rgba(0, 0, 0, .1);
     --card-color: #1A1C1D;
     --card-default-text-color: white;

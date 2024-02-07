@@ -20,14 +20,17 @@
         "title": "Socials",
         "content": [
             {
+                "name": "Github",
                 "icon": "fa-brands fa-github", 
                 "link": "https://github.com/driezie"
             },
             {
+                "name": "X, formally Twitter",
                 "icon": "fa-brands fa-twitter", 
                 "link": "https://x.com/DevvJust"
             },
             {
+                "name": "Codepen",
                 "icon": "fa-brands fa-codepen", 
                 "link": "https://codepen.io/driezie"
             }
